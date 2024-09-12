@@ -9,6 +9,9 @@ Refer to the samples for help with syntax if you need.
 2. Can you calculate the average of a 2D array?
 3. Can you calculate the maximum value stored within a 2D array?
 4. Can you calculate the minimum value stored in a 2D array?
+5. Can you create an array 10 by 10 that has zeros in each position?
+6. Can you create a 2D array, 10 by 10 with numbers in it 1-100?
+7. Could you shuffle the above array so that the numbers 1-100 are in random positions?
 
 
 ## Trickier Challenges
