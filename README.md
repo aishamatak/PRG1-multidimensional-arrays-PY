@@ -1,68 +1,213 @@
-# 2D Array Activities Project(s)
+# 2D Arrays - PRIMM Activities
 
-(You can create a new blank py file for these)
-Refer to the samples for help with syntax if you need.
+## PREDICT - What will happen?
 
-## Beginner Challenge
+Before running any code, look at these examples and **predict** what you think will happen. Write down your predictions!
 
-1. Can you total the contents of a 2D array?
-2. Can you calculate the average of a 2D array?
-3. Can you calculate the maximum value stored within a 2D array?
-4. Can you calculate the minimum value stored in a 2D array?
-5. Can you create an array 10 by 10 that has zeros in each position?
-6. Can you create a 2D array, 10 by 10 with numbers in it 1-100?
-7. Could you shuffle the above array so that the numbers 1-100 are in random positions?
-
-
-## Trickier Challenges
-
-### Flowers Scenario
-
-The 2D array below contains two rows and seven columns. The first row contains the names of plants. The second row contains a 'pointer' which 'points' to the next plant in alphabetical order. 
-
-So, starting with Begonia, we notice that the pointer is 1, so we look at the value stored at position 1. We can see that it is Daisy. Daisy’s pointer is 6, so we now look at the value stored in position 6, and so on..
-
-| Begonia | Daisy | Lily | Peony | Rose | Sunflower | Lavender |
-|---------|-------|------|-------|------|-----------|----------|
-| 1       | 6     | 3    | 4     | 5    | null      | 2        |
-
-
-In Python, this looks like this:
-
+### Example 1: Basic 2D Array
 ```python
-plants = [["Begonia", "Daisy", "Lily", "Peony", "Rose", "Sunflower", "Lavender"], [1,6,3,4,5,null,2]]
+scores = [[78, 81, 84], [55, 54, 62], [89, 71, 90]]
+print(scores[1][2])
+print(len(scores))
+print(len(scores[0]))
 ```
+**Predict:** What will be printed? What does each line do?
 
-So, we can write an algorithm that uses the pointer values in row 1 to print out the list in alphabetical order, without changing the order of the flowers in the array: Begonia -> Daisy -> Lavender -> Lily -> Peony -> Rose -> Sunflower.
-
-Here’s some pseudo code. Can you make it work in Python?
-
-```
-currentElement = 0
-
-WHILE currentElement != "null" DO 
-	OUTPUT plantList[0][currentElement]
-	currentElement = plantList[1][CurrentElement]
-ENDWHILE
-```
-
-### Noughts and Crosses Scenario
-
-Here's an empty board:
-
+### Example 2: Nested Loops
 ```python
-board = [
-    ["", "", ""], # Row 1
-    ["", "", ""], # Row 2
-    ["", "", ""]  # Row 3
+grid = [[1, 2], [3, 4], [5, 6]]
+total = 0
+for row in grid:
+    for number in row:
+        total += number
+print(f"Total: {total}")
+```
+**Predict:** What will the total be? How does the code calculate it?
+
+### Example 3: Finding Maximum
+```python
+temperatures = [[12, 15, 18], [22, 25, 20], [16, 19, 21]]
+max_temp = 0
+for day in temperatures:
+    for temp in day:
+        if temp > max_temp:
+            max_temp = temp
+print(f"Highest temperature: {max_temp}")
+```
+**Predict:** What will be the highest temperature found?
+
+## RUN - Test your predictions
+
+Now run each code example above. Were your predictions correct? If not, what surprised you?
+
+Create a new Python `.py` file and test each example. Note down what actually happened.
+
+## INVESTIGATE - Explore the patterns
+
+Use the sample code provided to investigate these questions:
+
+### Investigation 1: Array Access
+```python
+activities = [
+    ['Work', 9],
+    ['Eat', 1], 
+    ['Commute', 2],
+    ['Play Game', 1],
+    ['Sleep', 7]
 ]
 ```
 
-How about making a two-player noughts and crosses game?
+Try these commands and explain what each does:
+- `print(activities[0])`
+- `print(activities[2][1])`  
+- `print(activities[-1][0])`
+- `print(len(activities))`
 
-* Start with a blank board
-* Ask player 1 for a row and column where they'd like to place their symbol.
-* Check if the space is empty
-* If empty, add the player's symbol and print out the board again..
-* Player 2 has their go..
-* If you are feeling adventurous, you can add code to check to see if a player has won!
+### Investigation 2: Different Loop Styles
+Test these different ways to loop through the same 2D array:
+
+**Style 1 - Direct iteration:**
+```python
+for activity in activities:
+    print(activity[0], "takes", activity[1], "hours")
+```
+
+**Style 2 - Index-based:**
+```python
+for i in range(len(activities)):
+    print(activities[i][0], "takes", activities[i][1], "hours")
+```
+
+**Style 3 - Nested indices:**
+```python
+for i in range(len(activities)):
+    for j in range(len(activities[i])):
+        print(f"Position [{i}][{j}] = {activities[i][j]}")
+```
+
+Which style do you prefer for different tasks? When might you use each?
+
+## MODIFY - Change existing code
+
+### Modify 1: Enhance the Temperature Tracker
+Start with this code and make the requested changes:
+
+```python
+weekly_temps = [
+    [12, 15, 18, 20, 17],  # Week 1
+    [22, 25, 20, 19, 21],  # Week 2  
+    [16, 19, 21, 23, 18]   # Week 3
+]
+```
+
+**Your tasks:**
+1. Modify the maximum finding code to also find the minimum temperature
+2. Calculate and display the average temperature across all weeks
+3. Add code to find which week had the highest average temperature
+4. Add a new week of temperatures to the array
+
+### Modify 2: Extend the Activities List
+Using the activities array from Investigation 1:
+
+1. Add code to calculate the total hours spent on all activities
+2. Modify the percentage calculation to round to 1 decimal place instead of whole numbers
+3. Add a new activity of your choice
+4. Sort the activities by hours spent (highest first)
+
+### Modify 3: The Flowers Challenge
+Here's the flowers scenario with a small bug - can you fix it?
+
+```python
+plants = [
+    ["Begonia", "Daisy", "Lily", "Peony", "Rose", "Sunflower", "Lavender"], 
+    [1, 6, 3, 4, 5, None, 2]  # Note: None instead of null
+]
+
+current_element = 0
+alphabetical_order = []
+
+while current_element is not None:
+    alphabetical_order.append(plants[0][current_element])
+    current_element = plants[1][current_element]
+
+print(" -> ".join(alphabetical_order))
+```
+
+**Your tasks:**
+1. Run the code - does it work as expected?
+2. If there are issues, identify and fix them
+3. Modify it to also print the position number of each plant
+4. Add a new plant "Iris" in the correct alphabetical position
+
+## MAKE - Create from scratch
+
+### Make 1: Student Gradebook
+Create a 2D array to store student grades for different subjects:
+
+**Requirements:**
+- At least 4 students
+- At least 3 subjects per student  
+- Calculate each student's average
+- Find the highest and lowest grade overall
+- Determine which student has the best average
+
+### Make 2: Simple Game Board
+Create a basic game board (like tic-tac-toe but 4x4):
+
+**Requirements:**
+- Initialise an empty 4x4 board
+- Create a function to display the board nicely
+- Allow players to place 'X' or 'O' at specific coordinates
+- Check if a position is already occupied
+- Keep track of how many moves have been made
+
+### Make 3: Weather Station Data
+Create a program that simulates weather data collection:
+
+**Requirements:**
+- Store temperature and humidity for each day of a week
+- Calculate daily averages
+- Find the day with the most extreme weather (highest temperature difference from average)
+- Create a simple weather report summary
+
+### Make 4: Cinema Seating
+Create a cinema seating system:
+
+**Requirements:**
+- Create a 2D array representing cinema seats (8 rows, 10 seats each)
+- Use different symbols for available/booked seats
+- Allow users to "book" specific seats
+- Display the seating chart
+- Calculate how many seats are still available
+
+## Extension Challenges
+
+### Challenge 1: Advanced Flowers
+Extend the flowers scenario:
+- Add more plants to make the list longer
+- Create a function that can insert a new plant in the correct alphabetical position
+- Modify the algorithm to print in reverse alphabetical order
+
+### Challenge 2: Noughts and Crosses
+Complete the noughts and crosses game:
+- Implement win-checking logic (rows, columns, diagonals)
+- Add input validation
+- Keep score across multiple games
+- Allow players to choose their symbols
+
+### Challenge 3: Data Analysis
+Create a program that analyses sales data:
+```python
+# Sales data: [Product, Week1, Week2, Week3, Week4]
+sales_data = [
+    ["Laptops", 15, 22, 18, 25],
+    ["Phones", 30, 35, 28, 40], 
+    ["Tablets", 12, 15, 20, 18]
+]
+```
+- Find the best-selling product overall
+- Calculate week-on-week growth rates
+- Identify trends (increasing/decreasing sales)
+- Create a summary report
+
+Remember: The key to mastering 2D arrays is understanding how to navigate through rows and columns effectively. Practice different loop patterns and always think about what level (outer array vs inner array) you're working with!
