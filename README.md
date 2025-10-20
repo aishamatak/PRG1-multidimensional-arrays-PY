@@ -80,8 +80,8 @@ for i in range(len(activities)):
 
 **Style 3 - Nested indices:**
 ```python
-for i in range(len(activities)):
-    for j in range(len(activities[i])):
+for i in range(len(activities)): 0-4 (or 0-5 but dont include 5)
+    for j in range(len(activities[i])): 0-1 (or 0-2 but dont include 2)
         print(f"Position [{i}][{j}] = {activities[i][j]}")
 ```
 
